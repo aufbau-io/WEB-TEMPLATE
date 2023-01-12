@@ -8,7 +8,7 @@
 
 <section>
 	<h1>
-		DAS AUFBAUZEUG
+		AUFBAU
 	</h1>
 
 </section>

@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/stores';
+	import { screenType } from '$lib/store/store';
 
 	export let navItems = [];
 	export async function load() {
@@ -12,11 +13,14 @@
 </script>
 
 <nav>
+	<p>aufbau</p>
+	{#if $screenType == 3}
 	{#each navItems as navItem}
 		<a href={navItem.href} class="" class:active={navItem.href === $page.url.pathname}
 			>{navItem.name}</a
 		>
 	{/each}
+	{/if}
 
 	<!-- <a href="https://aufbau.io" target="_blank">EIN AUFBAU DING</a> -->
 </nav>

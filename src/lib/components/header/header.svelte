@@ -1,18 +1,14 @@
 <script>
 	import Nav from './nav.svelte';
-	import { darkMode, screenType } from '$lib/store/store';
+	import { darkMode } from '$lib/store/store';
 	// stub data out
 	const navItems = [
-		{
-			name: 'AUFBAU',
-			href: '/'
-		},
 		{
 			name: 'PROJECTS',
 			href: '/'
 		},
 		{
-			name: 'ART / MATHS',
+			name: 'ART',
 			href: '/'
 		},
 		{
@@ -29,9 +25,8 @@
 
 <header>
 	<main>
-	{#if $screenType == 3}
+
 		<Nav {navItems} />
-	{/if}
 
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div on:click={() => toggleDarkMode()} class="darkMode">
@@ -58,9 +53,9 @@
 		justify-content: space-between;
 		align-items: center;
 
-		padding: 0 16px 0 8px;
+		padding: 20px 10px;
 		font-size: 14px;
-		height: 60px;
+		height: calc(3 * var(--margin));
 		font-family: nb-architekt;
 		font-weight: 500;
 	}
@@ -71,15 +66,6 @@
 
 	.app_link {
 		opacity: 0.3;
-	}
-
-	.logo {
-		padding: 20px 16px;
-		text-transform: none;
-	}
-
-	.tag {
-		padding: 20px 16px;
 	}
 
 	.darkMode p {
@@ -96,9 +82,6 @@
 	}
 
 	@media only screen and (max-width: 768px) {
-		header {
-			padding: 0 18px;
-			justify-content: flex-end;
-		}
+
 	}
 </style>

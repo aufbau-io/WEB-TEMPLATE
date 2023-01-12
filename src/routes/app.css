@@ -105,7 +105,7 @@ a:hover {
 }
 
 h1 {
-	font-size: 2rem;
+	font-size: 2.5rem;
 	text-align: center;
 }
 
@@ -143,9 +143,12 @@ button:focus:not(:focus-visible) {
 	outline: none;
 }
 
-@media (min-width: 720px) {
+@media (max-width: 720px) {
+	:root {
+		--margin: 10px;
+	}
 	h1 {
-		font-size: 2.4rem;
+		font-size: 2rem;
 	}
 }
 

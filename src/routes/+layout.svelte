@@ -80,11 +80,16 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding: calc(4 * var(--margin));
+		padding: calc(4 * var(--margin)) calc(4 * var(--margin));
 		width: 100%;
 		max-width: 64rem;
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
 
+	@media only screen and (max-width: 768px) {
+		main {
+			padding: calc(4 * var(--margin)) calc(3 * var(--margin));
+		}
+	}
 </style>
