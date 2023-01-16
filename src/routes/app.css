@@ -143,6 +143,23 @@ button:focus:not(:focus-visible) {
 	outline: none;
 }
 
+/* scrollbar width */
+::-webkit-scrollbar {
+	width: 0px !important;
+	height: 0px !important;
+}
+
+/* scrollbar Track */
+::-webkit-scrollbar-track {
+	background: transparent !important;
+}
+
+/* scrollbar Handle */
+::-webkit-scrollbar-thumb {
+	background: #1b1c1d !important;
+	border-radius: 0;
+}
+
 @media (max-width: 720px) {
 	:root {
 		--margin: 10px;
