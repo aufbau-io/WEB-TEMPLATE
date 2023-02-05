@@ -7,11 +7,13 @@
 	import Header from '$lib/components/header/header.svelte';
 	import Footer from '$lib/components/footer/footer.svelte';
 
-	let Geometry;
+	import Experience from '$lib/three-d/Experience.js'
+
+	let experience;
 	onMount(async () => {
 
-		const module = await import('$lib/components/three/lorentz.svelte');
-		Geometry = module.default;
+		// const module = await import('$lib/three-d/Experience.js')
+		const experience = new Experience(document.querySelector('canvas.webgl'))
 
 		// ---------------------------------------------------------------------------
 		// SCREEN
@@ -37,8 +39,8 @@
 	});
 </script>
 
-<svelte:component this={Geometry} />
-
+<canvas class="webgl"></canvas>
+<!-- <svelte:component this={experience} /> -->
 
 <div class="app">
 	{#if $screenType}
@@ -62,6 +64,11 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+	}
+
+	.webgl {
+		position: absolute;
+		z-index: 0;
 	}
 
 	header {
