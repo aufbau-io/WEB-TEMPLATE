@@ -2,18 +2,28 @@
 	import './app.css';
 
 	import { onMount } from 'svelte';
-	import { screenType, is_iframe } from '$lib/store/store';
+	import { screenType, iframe } from '$lib/store/store';
 
 	import Header from '$lib/components/header/header.svelte';
 	import Footer from '$lib/components/footer/footer.svelte';
 
 	import Experience from '$lib/three-d/Experience.js'
 
-	let experience;
 	onMount(async () => {
 
-		// const module = await import('$lib/three-d/Experience.js')
 		const experience = new Experience(document.querySelector('canvas.webgl'))
+
+		// ---------------------------------------------------------------------------
+		// HEIGHT
+		// ---------------------------------------------------------------------------
+
+		let vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+		window.addEventListener('resize', () => {
+			let vh = window.innerHeight * 0.01;
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
+		});
 
 		// ---------------------------------------------------------------------------
 		// SCREEN
@@ -34,13 +44,12 @@
 
 		if (window.location !== window.parent.location) {
 			// The page is in an iframe
-			is_iframe.set(true);
+			iframe.set(true);
 		}
 	});
 </script>
 
 <canvas class="webgl"></canvas>
-<!-- <svelte:component this={experience} /> -->
 
 <div class="app">
 	{#if $screenType}
@@ -63,7 +72,8 @@
 	.app {
 		display: flex;
 		flex-direction: column;
-		min-height: 100vh;
+		height: 100%;
+		height: calc(var(--vh, 1vh) * 100);
 	}
 
 	.webgl {
